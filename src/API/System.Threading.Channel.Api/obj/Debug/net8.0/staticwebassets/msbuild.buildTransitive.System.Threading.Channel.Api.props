@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/System.Threading.Channel.Api.props" />
-</Project>
