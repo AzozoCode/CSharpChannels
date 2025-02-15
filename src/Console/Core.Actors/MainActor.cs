@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Core.Actors;
 
-public class MainActor:BaseActor
+public  class MainActor:BaseActor
 {
     public MainActor()
     {
@@ -11,11 +11,12 @@ public class MainActor:BaseActor
 
 
 
-    private async Task DoProcessMessage(MainActorMessage message)
+    private static async Task DoProcessMessage(MainActorMessage message)
     {
         try
         {
             Console.WriteLine("value:{0}",message.Message);
+            await Task.CompletedTask;
         }
         catch (Exception e)
         {

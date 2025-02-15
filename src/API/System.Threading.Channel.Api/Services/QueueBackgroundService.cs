@@ -10,7 +10,7 @@ public class QueueBackgroundService(IQueueService<int> queueService):BackgroundS
 
             Console.WriteLine("Processing data from queue =>{0}\nCurrentCount:{1}",data,queueService.Count());
 
-            await Task.Delay(50,stoppingToken);
+            await Task.Delay(1000, stoppingToken);
         }
     }
 }

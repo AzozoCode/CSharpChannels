@@ -27,6 +27,7 @@ public class ChannelBackgroundService2(ChannelService<int> channelService):Backg
         {
             var item = await channelService.DequeueAsync(stoppingToken);
             Console.WriteLine("Reader 2 Processing value => {0}",item);
+            
         }
     }
 }

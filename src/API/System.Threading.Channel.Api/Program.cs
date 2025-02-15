@@ -53,13 +53,16 @@ public static class Program
         });
 
 
-        app.MapPost("/push-to-queue", async([FromServices] IQueueService<int> queueService,int itemCount) =>
+        app.MapPost("/push-to-queue", async([FromServices] ActorRegistry registry,int itemCount) =>
         {
-            for (var i = 0; i < itemCount; i++)
+            var mainActor = await registry.GetAsync<MainActor>();
+
+            if (mainActor.Equals(ActorRefs.Nobody))
             {
-                queueService.Enqueue(i);
-                await Task.Delay(100);
+                return Results.Problem("Main actor is not available");
             }
+            mainActor.Tell(new SendQueueMessage(itemCount));
+
             return Results.Ok("Success");
 
         });
