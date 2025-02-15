@@ -5,11 +5,11 @@ namespace System.Threading.Channel.Api.Actors;
 
 public class MainActor:BaseActor
 {
-    private readonly QueueService<int> _queueService;
+    private readonly ChannelService<int> _channelService;
     
-    public MainActor(QueueService<int> queueService)
+    public MainActor(ChannelService<int> channelService)
     {
-        _queueService = queueService;
+        _channelService = channelService;
         ReceiveAsync<SendChannelMessage>(DoSendChannelMessage);
     }
 
@@ -21,7 +21,7 @@ public class MainActor:BaseActor
         {
             for (var i = 0; i < message.ItemCount; i++)
             {
-                _queueService.Enqueue(Random.Shared.Next(1,1001));
+                _channelService.Enqueue(Random.Shared.Next(1,1001));
 
                 await Task.Delay(50);
             }

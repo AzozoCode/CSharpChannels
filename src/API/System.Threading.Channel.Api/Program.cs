@@ -16,9 +16,11 @@ public static class Program
 
         var configuration = builder.Configuration;
 
-        builder.Services.AddSingleton<QueueService<int>>();
+        builder.Services.AddSingleton<ChannelService<int>>();
+        builder.Services.AddSingleton(typeof(IQueueService<>),typeof(QueueService<>));
         builder.Services.AddHostedService<ChannelBackgroundService>();
         builder.Services.AddHostedService<ChannelBackgroundService2>();
+        builder.Services.AddHostedService<QueueBackgroundService>();
         builder.Services.AddActorSystem(configuration);
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -29,7 +31,7 @@ public static class Program
         if (app.Environment.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
+           app.UseSwagger();
             app.UseSwaggerUI();
         }
 
@@ -48,6 +50,18 @@ public static class Program
             mainActor.Tell(new SendChannelMessage(itemCount));
 
             return Results.Ok("Message sent to MainActor.....:)");
+        });
+
+
+        app.MapPost("/push-to-queue", async([FromServices] IQueueService<int> queueService,int itemCount) =>
+        {
+            for (var i = 0; i < itemCount; i++)
+            {
+                queueService.Enqueue(i);
+                await Task.Delay(100);
+            }
+            return Results.Ok("Success");
+
         });
 
         app.Run();

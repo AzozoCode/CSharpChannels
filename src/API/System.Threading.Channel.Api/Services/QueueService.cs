@@ -1,31 +1,33 @@
-using System.Threading.Channels;
+using System.Collections.Concurrent;
 
 namespace System.Threading.Channel.Api.Services;
 
-public class QueueService<T>
+internal class QueueService<T>:IQueueService<T>
 {
-
-    private readonly Channel<T> _channel = Channels.Channel.CreateUnbounded<T>(new UnboundedChannelOptions()
-    {
-        SingleReader = false,
-        SingleWriter = true
-    });
+    private readonly ConcurrentQueue<T> _queue = new();
 
 
-    public bool Enqueue(T item)
-    {
-       return _channel.Writer.TryWrite(item);
+    public void Enqueue(T item)
+    { 
+        _queue.Enqueue(item);
     }
 
 
-    public ValueTask<T> DequeueAsync(CancellationToken cancellationToken)
+    public T? Dequeue()
     {
-        return _channel.Reader.ReadAsync(cancellationToken);
+        return _queue.TryDequeue(out var result) ? result : default;
     }
 
 
-    public ValueTask<bool> WaitForTheNextRead(CancellationToken cancellationToken = default)
-    {
-        return _channel.Reader.WaitToReadAsync(cancellationToken);
-    }
+    public int Count() => _queue.Count;
+}
+
+
+public interface IQueueService<T>
+{
+    void Enqueue(T item);
+
+    T? Dequeue();
+
+    int Count();
 }
