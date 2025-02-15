@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2DD9DD92-5174-46E9-8212-8B071D777CC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7ED0BDE2-B149-4E57-9F2B-EFC678F34F24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4E51F8A9-0864-4A78-BF80-D9E37B7B6DDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Threading.Channel.Api", "src\API\System.Threading.Channel.Api\System.Threading.Channel.Api.csproj", "{F785AF1C-A719-4A76-A969-EFC4A8488774}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E51F8A9-0864-4A78-BF80-D9E37B7B6DDE} = {2DD9DD92-5174-46E9-8212-8B071D777CC6}
+		{F785AF1C-A719-4A76-A969-EFC4A8488774} = {4E51F8A9-0864-4A78-BF80-D9E37B7B6DDE}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F785AF1C-A719-4A76-A969-EFC4A8488774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F785AF1C-A719-4A76-A969-EFC4A8488774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F785AF1C-A719-4A76-A969-EFC4A8488774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F785AF1C-A719-4A76-A969-EFC4A8488774}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

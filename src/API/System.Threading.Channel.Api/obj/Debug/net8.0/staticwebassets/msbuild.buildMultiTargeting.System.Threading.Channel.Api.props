@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/System.Threading.Channel.Api.props" />
+</Project>
