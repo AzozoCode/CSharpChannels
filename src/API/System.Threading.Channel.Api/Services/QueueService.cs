@@ -5,7 +5,11 @@ namespace System.Threading.Channel.Api.Services;
 public class QueueService<T>
 {
 
-    private readonly Channel<T> _channel = Channels.Channel.CreateUnbounded<T>();
+    private readonly Channel<T> _channel = Channels.Channel.CreateUnbounded<T>(new UnboundedChannelOptions()
+    {
+        SingleReader = false,
+        SingleWriter = true
+    });
 
 
     public bool Enqueue(T item)

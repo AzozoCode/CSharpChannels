@@ -18,6 +18,7 @@ public static class Program
 
         builder.Services.AddSingleton<QueueService<int>>();
         builder.Services.AddHostedService<ChannelBackgroundService>();
+        builder.Services.AddHostedService<ChannelBackgroundService2>();
         builder.Services.AddActorSystem(configuration);
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

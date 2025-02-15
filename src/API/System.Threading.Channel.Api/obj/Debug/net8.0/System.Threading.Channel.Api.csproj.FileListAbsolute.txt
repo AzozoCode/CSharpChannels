@@ -50,3 +50,4 @@
 /Users/randy/Projects/System.Threading.Channels/src/API/System.Threading.Channel.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
 /Users/randy/Projects/System.Threading.Channels/src/API/System.Threading.Channel.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/randy/Projects/System.Threading.Channels/src/API/System.Threading.Channel.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/randy/Projects/System.Threading.Channels/src/API/System.Threading.Channel.Api/obj/Debug/net8.0/System.Threading.Channel.Api.sourcelink.json
